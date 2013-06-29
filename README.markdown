@@ -4,9 +4,10 @@ UIImage+FaceDetection is an Objective-C category for `UIImage`. It gives `UIImag
 
 ## Use
 
-1.  Add the files 'UIImage+FaceDetection.h' & 'UIImage+FaceDetection.m' to your project
-2.  Import the header using  `#import "UIImage+FaceDetection.h"`
-3.  Call the `facesWithAccuracy :(NSString *)detectorAccuracy` method in the following way:
+1.  Add the CoreImage framework to your project
+2.  Add the files 'UIImage+FaceDetection.h' & 'UIImage+FaceDetection.m' to your project
+3.  Import the header using  `#import "UIImage+FaceDetection.h"`
+4.  Call the `facesWithAccuracy :(NSString *)detectorAccuracy` method in the following way:
 
 <pre>
 UIImage *myImage = [UIImage imageNamed:@"exampleImage.png"];
