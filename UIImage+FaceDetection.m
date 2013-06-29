@@ -18,4 +18,10 @@
     return [faces copy];
 }
 
+- (CIFaceFeature *)largestFaceWithAccuracy :(NSString *)detectorAccuracy {
+    //Return largest face
+    
+    return nil
+}
+
 @end
