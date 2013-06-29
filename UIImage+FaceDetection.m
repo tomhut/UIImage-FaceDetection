@@ -14,8 +14,25 @@
     for (CIFaceFeature *face in features) {
         [faces addObject:face];
     }
-        
+    
     return [faces copy];
+}
+
+- (CIFaceFeature *)largestFaceWithAccuracy :(NSString *)detectorAccuracy {
+    
+    NSArray *faces = [self facesWithAccuracy:detectorAccuracy];
+    
+    float currentLargestWidth = 0;
+    CIFaceFeature *largestFace;
+    
+    for (CIFaceFeature *face in faces) {
+        if (face.bounds.size.width > currentLargestWidth) {
+            largestFace = face;
+            currentLargestWidth = face.bounds.size.width;
+        }
+    }
+    
+    return largestFace;
 }
 
 @end
