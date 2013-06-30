@@ -9,14 +9,14 @@ UIImage+FaceDetection is an Objective-C category for `UIImage`. It gives `UIImag
 3.  Import the header using  `#import "UIImage+FaceDetection.h"`
 4.  Call the `- (NSArray *)facesWithAccuracy :(NSString *)detectorAccuracy` method in the following way:
 
-## Other Functions
-Return the largest face from the image 
-`- (CIFaceFeature *)largestFaceWithAccuracy :(NSString *)detectorAccuracy`
-
 <pre>
 UIImage *myImage = [UIImage imageNamed:@"exampleImage.png"];
 NSArray *faces = [myImage facesWithAccuracy:CIDetectorAccuracyHigh];
 </pre>
+
+## Other Functions
+Return the largest face from the image 
+`- (CIFaceFeature *)largestFaceWithAccuracy :(NSString *)detectorAccuracy`
 
 ## Future
 
