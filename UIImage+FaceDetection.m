@@ -4,18 +4,12 @@
 
 - (NSArray *)facesWithAccuracy :(NSString *)detectorAccuracy {
     CIImage *coreImageRepresentation = [[CIImage alloc] initWithImage:self];
-    
+
     CIDetector* detector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:[NSDictionary dictionaryWithObject:detectorAccuracy forKey:CIDetectorAccuracy]];
-    
+
     NSArray *features = [detector featuresInImage:coreImageRepresentation];
-    
-    NSMutableArray *faces = [[NSMutableArray alloc] init];
-    
-    for (CIFaceFeature *face in features) {
-        [faces addObject:face];
-    }
-    
-    return [faces copy];
+
+    return features;
 }
 
 - (CIFaceFeature *)largestFaceWithAccuracy :(NSString *)detectorAccuracy {
@@ -33,6 +27,19 @@
     }
     
     return largestFace;
+}
+
+- (UIImage *)croppedAroundLargestFaceWithAccuracy :(NSString *)detectorAccuracy {
+    CIFaceFeature *largestFace = [self largestFaceWithAccuracy:detectorAccuracy];
+
+    CIImage *coreImage = [[CIImage alloc] initWithImage:self];
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIImage *faceImage =
+    [coreImage imageByCroppingToRect:largestFace.bounds];
+    UIImage *croppedImage = [UIImage imageWithCGImage:[context createCGImage:faceImage
+                                                                    fromRect:faceImage.extent]];
+
+    return croppedImage;
 }
 
 @end
