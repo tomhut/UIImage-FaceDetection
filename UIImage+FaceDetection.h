@@ -4,5 +4,6 @@
 
 - (NSArray *)facesWithAccuracy :(NSString *)detectorAccuracy;
 - (CIFaceFeature *)largestFaceWithAccuracy :(NSString *)detectorAccuracy;
+- (UIImage *)croppedAroundLargestFaceWithAccuracy :(NSString *)detectorAccuracy;
 
 @end

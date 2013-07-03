@@ -29,4 +29,17 @@
     return largestFace;
 }
 
+- (UIImage *)croppedAroundLargestFaceWithAccuracy :(NSString *)detectorAccuracy {
+    CIFaceFeature *largestFace = [self largestFaceWithAccuracy:detectorAccuracy];
+
+    CIImage *coreImage = [[CIImage alloc] initWithImage:self];
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIImage *faceImage =
+    [coreImage imageByCroppingToRect:largestFace.bounds];
+    UIImage *croppedImage = [UIImage imageWithCGImage:[context createCGImage:faceImage
+                                                                    fromRect:faceImage.extent]];
+
+    return croppedImage;
+}
+
 @end

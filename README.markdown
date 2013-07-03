@@ -18,6 +18,9 @@ NSArray *faces = [myImage facesWithAccuracy:CIDetectorAccuracyHigh];
 Return the largest face from the image 
 `- (CIFaceFeature *)largestFaceWithAccuracy :(NSString *)detectorAccuracy`
 
+Return an image cropped around the largest face
+`- (UIImage *)croppedAroundLargestFaceWithAccuracy :(NSString *)detectorAccuracy`
+
 ## Future
 
 1.  Better handling when an invalid or nil 'CIDetectorAccuracy' is passed in.
